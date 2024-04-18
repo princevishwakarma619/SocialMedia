@@ -1,0 +1,29 @@
+{
+  "name": "signup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "start": "C:/Users/Admin/Desktop/IAASTHA/Social Media/src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cookie": "^0.6.0",
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-session": "^1.18.0",
+    "init": "^0.1.2",
+    "jsonwebtoken": "^9.0.2",
+    "moment": "^2.30.1",
+    "multer": "^1.4.5-lts.1",
+    "mysql": "^2.18.1",
+    "path": "^0.12.7",
+    "popup": "^0.0.3",
+    "socket.io": "^4.7.4",
+    "websocket": "^1.0.34"
+  }
+}

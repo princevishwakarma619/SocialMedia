@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #chat {
+            margin: 20px;
+        }
+
+        #messages {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #messages li {
+            margin-bottom: 10px;
+        }
+
+        #senderInput,
+        #receiverInput,
+        #messageInput {
+            width: 200px;
+            margin-bottom: 5px;
+        }
+
+        #sendButton {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="chat">
+        <ul id="messages"></ul>
+        <!-- <input id="senderInput" placeholder="Sender Username" autocomplete="off" /><br>
+        <input id="receiverInput" placeholder="Receiver Username" autocomplete="off" /><br> -->
+        <form action="/sendMessage/:userId">    
+            <input id="messageInput" placeholder="Message" autocomplete="off" /><button id="sendButton" type="submit">Send</button>
+        </form>
+    </div>  
+    <script src="https://cdn.socket.io/4.3.2/socket.io.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const socket = io();
+
+            const messages = document.getElementById('messages');
+            // const senderInput = document.getElementById('senderInput');
+            // const receiverInput = document.getElementById('receiverInput');
+            const messageInput = document.getElementById('messageInput');
+            const sendButton = document.getElementById('sendButton');
+
+            // sendButton.addEventListener('click', () => {
+            //     const sender = senderInput.value.trim();
+            //     const receiver = receiverInput.value.trim();
+
+            //     const message = messageInput.value.trim();
+            //     if (sender !== '' && receiver !== '' && message !== '') {
+            //         const data = {
+            //             sender: sender,
+            //             receiver: receiver,
+            //             message: message
+            //         };
+            //         socket.emit('message', data);
+            //         messageInput.value = '';
+
+
+            // }
+            // });
+
+        socket.on('message', (data) => {
+            const { sender, receiver, message, timestamp } = data;
+            const li = document.createElement('li');
+            li.textContent = `[${new Date(timestamp).toLocaleTimeString()}] : ${message}`;
+            messages.appendChild(li);
+        });
+        });
+
+    </script>
+</body>
+
+</html>
